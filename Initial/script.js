@@ -21,7 +21,7 @@ let isPlayer_O_Turn = false;
 
 startGame()
 
-restartButton.addEventListener('click', startGame())
+restartButton.addEventListener('click', startGame)
 
 function endGame(draw) {
     if (draw) {
