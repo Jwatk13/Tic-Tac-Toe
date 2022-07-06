@@ -71,7 +71,7 @@ body {
     background-position: center;
 }
 
-/* for set (set) */
+/* for X (set) */
 .cell:not(.circle).x {
 	background: 
         linear-gradient(to top right, 
