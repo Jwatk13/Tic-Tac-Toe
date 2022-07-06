@@ -12,29 +12,16 @@ const winningCombos = [
 ]
 
 const cellElements = document.querySelectorAll('[data-cell]')
-const boardElement = document.getElementById("boardi")
 const winningMessageElement = document.getElementById('winningMessage')
 const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.getElementById('winningMessageText')
+const boardElement = document.getElementById("boardi")
 
-console.log(boardElement)
+let isPlayer_O_Turn = false;
 
-let isPlayer_O_Turn = false
+startGame()
 
-function handleCellclick(evt) {
-    const cell = evt.target
-    const currentClass = isPlayer_O_Turn ? playerClassO : playerClassX
-    placeMark(cell, currentClass)
-    
-    if (checkWin(currentClass)) {
-        endGame(false)
-    } else if (isDraw()) {
-        endGame(true)
-    } else {
-        swapTurns()
-        setBoardHoverClass()
-    }
-}
+restartButton.addEventListener('click', startGame())
 
 function endGame(draw) {
     if (draw) {
@@ -79,6 +66,21 @@ function checkWin(currentClass) {
     })
 }
 
+function handleCellclick(evt) {
+    const cell = evt.target
+    const currentClass = isPlayer_O_Turn ? playerClassO : playerClassX
+    placeMark(cell, currentClass)
+    
+    if (checkWin(currentClass)) {
+        endGame(false)
+    } else if (isDraw()) {
+        endGame(true)
+    } else {
+        swapTurns()
+        setBoardHoverClass()
+    }
+}
+
 function startGame() {
     isPlayer_O_Turn = false
     cellElements.forEach(cell => {
@@ -90,9 +92,3 @@ function startGame() {
     setBoardHoverClass()
     winningMessageElement.classList.remove('show')
 }
-
-startGame()
-
-restartButton.addEventListener('click', startGame)
-
-
