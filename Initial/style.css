@@ -53,3 +53,19 @@ body {
 .cell.x, .cell.circle {
     cursor: not-allowed;
 }
+
+/* for the X */
+.board.x .cell:not(.circle):not(.x):hover {
+    background: 
+        linear-gradient(
+            to top right, 
+            transparent calc(50% - var(--l) / 2), 
+            var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2),
+            transparent calc(50% + var(--l) / 2)),
+            linear-gradient(to bottom right,
+            transparent calc(50% - var(--l) / 2),
+            var(--color) calc(50% - var(--l) / 2) calc(50% + var(--l) / 2));
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
